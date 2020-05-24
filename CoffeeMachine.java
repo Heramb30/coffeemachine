@@ -6,38 +6,96 @@ public class CoffeeMachine {
     Scanner sc=new Scanner(System.in);
     
     
+      
+      // new code
+      int milk=540,bean=120,water=400,cup=9,money=550;
+      String action;
+      
+      
+      
+          System.out.println("The coffee machine has");
+          System.out.println(water+" of water\n"+milk+" of milk\n"+bean+" of coffee beans\n"+cup+" of disposable cups\n"+money+" of money");
+           
+           
     
-      System.out.println("Write how many ml of water the coffee machine has:");
-      int a=sc.nextInt();
-      System.out.println("Write how many ml of milk the coffee machine has:");
-      int b=sc.nextInt();
-      System.out.println("Write how many grams of coffee beans the coffee machine has:");
-      int c=sc.nextInt();
-      System.out.println("Write how many cups of coffee you will need:");
-      int x=sc.nextInt();
-      int min;
-      if(a/200<=b/50)
-      {
-          if(a/200<=c/15)
-          min = a/200;
-          else
-          min = c/15;
+      System.out.println("Write action (buy, fill, take):");
+           action=sc.next();
+          if(action.equals("buy"))
+          {
+              System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: ");
+              int num=sc.nextInt();
+              if(num==1)
+              {
+                  if(water<250 || bean<16)
+                  {
+                      System.out.println("sorry i have insufficient integrident");
+                  }
+                  else
+                  {
+                     water=water-250;
+                     bean=bean-16;
+                     money=money+4; 
+                     cup=cup-1;
+                  }
+                  
+              }
+              else if(num==2)
+              {
+                  if(water<350 || bean<20 || milk<75)
+                  {
+                      System.out.println("sorry i have insufficient integrident");
+                  }
+                  else
+                  {
+                    
+                     water=water-350;
+                     bean=bean-20;
+                     money=money+7;
+                     milk=milk-75; 
+                   cup=cup-1;
+                  }
+              }
+              
+                  else
+                  {
+                       if(water<200 || bean<12 || milk<100)
+                  {
+                      System.out.println("sorry i have insufficient integrident");
+                  }
+                        else
+                  {
+                    
+                     water=water-200;
+                     bean=bean-12;
+                     money=money+6;
+                     milk=milk-100; 
+                   cup=cup-1;
+                  }
+              }
+          }
+         else if(action.equals("fill"))
+         {
+             System.out.println("Write how many ml of water do you want to add:");
+             int pq=sc.nextInt();
+             water=water+pq;
+             System.out.println("Write how many ml of milk do you want to add: ");
+             pq=sc.nextInt();
+             milk=milk+pq;
+             System.out.println("Write how many grams of coffee beans do you want to add:");
+             pq=sc.nextInt();
+             bean=bean+pq;
+             System.out.println("Write how many disposable cups of coffee do you want to add:");
+             pq=sc.nextInt();
+             cup=cup+pq;
+         }
+         else
+         {
+             System.out.println("I gave you $"+money);
+             money=0;
+         }
           
-      }
-      else
-      {
-          if(b/50<=c/15)
-          min = b/50;
-          else
-          min = c/15;
-      }
-      if(min==x)
-      System.out.println("Yes, I can make that amount of coffee");
-      else if(min>x)
-      System.out.println("Yes, I can make that amount of coffee (and even "+(min-x)+" more than that)");
-      else
-      System.out.println("No, I can make only "+min+" cup(s) of coffee");
-    
+    System.out.println("The coffee machine has");
+          System.out.println(water+" of water\n"+milk+" of milk\n"+bean+" of coffee beans\n"+cup+" of disposable cups\n"+money+" of money");
     
     
     
